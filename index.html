@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Daily Emoji Quiz</h1>
+        <p>Guess the word or phrase represented by the emojis. You have six attempts.</p>
+    </header>
+    <main>
+        <section id="category-selection">
+            <h2>Select a category</h2>
+            <button class="category-btn" data-category="Movies">Movies</button>
+            <button class="category-btn" data-category="Anime">Anime</button>
+            <button class="category-btn" data-category="Video Games">Video Games</button>
+            <button class="category-btn" data-category="Other">Other</button>
+            <button class="category-btn" data-category="Daily Challenge">Daily Challenge</button>
+        </section>
+
+        <section id="quiz-section" hidden>
+            <div id="emoji-display" class="emoji"></div>
+            <input type="text" id="guess-input" placeholder="Your guess" autofocus>
+            <button id="guess-btn">Guess</button>
+            <button id="hint-btn" type="button">Hint</button>
+            <p id="lives" class="lives"></p>
+            <p id="message"></p>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
