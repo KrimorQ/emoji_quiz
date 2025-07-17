@@ -1,32 +1,48 @@
 const quizzes = [
-    { emoji: '🎬🚀', answer: 'Star Wars' },
-    { emoji: '🕷️🧑', answer: 'Spider Man' },
-    { emoji: '🐉🔥', answer: 'Dragon Fire' },
-    { emoji: '🍕🐢', answer: 'Teenage Mutant Ninja Turtles' },
-    { emoji: '👑🧊', answer: 'Frozen' },
-    { emoji: '⚡️🧙', answer: 'Harry Potter' },
-    { emoji: '🌋🦎', answer: 'Godzilla' },
-    { emoji: '🐯👑', answer: 'Tiger King' },
-    { emoji: '⛺🔥', answer: 'campfire' },
-    { emoji: '🍔🍟', answer: 'fast food' }
+    { emoji: '🎬🚀', answer: 'Star Wars', category: 'Movies' },
+    { emoji: '🕷️🧑', answer: 'Spider Man', category: 'Movies' },
+    { emoji: '🐉🔥', answer: 'Dragon Fire', category: 'Movies' },
+    { emoji: '🍕🐢', answer: 'Teenage Mutant Ninja Turtles', category: 'Movies' },
+    { emoji: '👑🧊', answer: 'Frozen', category: 'Movies' },
+    { emoji: '⚡️🧙', answer: 'Harry Potter', category: 'Movies' },
+    { emoji: '🌋🦎', answer: 'Godzilla', category: 'Movies' },
+    { emoji: '🐯👑', answer: 'Tiger King', category: 'Movies' },
+    { emoji: '⛺🔥', answer: 'campfire', category: 'Other' },
+    { emoji: '🍔🍟', answer: 'fast food', category: 'Other' }
 ];
 
 let attempts = 0;
 const maxAttempts = 6;
 
-function getQuizOfTheDay() {
+function getQuizOfTheDay(category) {
     const today = new Date();
     const start = new Date(today.getFullYear(), 0, 0);
     const diff = today - start;
     const dayOfYear = Math.floor(diff / 86400000); // ms per day
-    return quizzes[dayOfYear % quizzes.length];
+    const qs = quizzes.filter(q => q.category === category);
+    return qs[dayOfYear % qs.length];
 }
 
-const currentQuiz = getQuizOfTheDay();
-document.getElementById('emoji-display').textContent = currentQuiz.emoji;
+let currentQuiz = null;
 
 const input = document.getElementById('guess-input');
 const message = document.getElementById('message');
+
+function startQuiz(category) {
+    attempts = 0;
+    currentQuiz = getQuizOfTheDay(category);
+    document.getElementById('emoji-display').textContent = currentQuiz.emoji;
+    message.textContent = '';
+    input.disabled = false;
+    input.value = '';
+    document.getElementById('quiz-section').hidden = false;
+    document.getElementById('category-selection').hidden = true;
+    input.focus();
+}
+
+document.querySelectorAll('.category-btn').forEach(btn => {
+    btn.addEventListener('click', () => startQuiz(btn.dataset.category));
+});
 
 document.getElementById('guess-btn').addEventListener('click', () => {
     const guess = input.value.trim().toLowerCase();

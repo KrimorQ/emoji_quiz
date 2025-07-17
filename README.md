@@ -1,6 +1,6 @@
 # Emoji Quiz
 
-This project is a lightweight website that offers a daily emoji quiz inspired by **Wordle**. Each day you are presented with a set of emojis hinting at a word or phrase. You have six attempts to guess the answer.
+This project is a lightweight website that offers a daily emoji quiz inspired by **Wordle**. Each day you are presented with a set of emojis hinting at a word or phrase. You have six attempts to guess the answer. Begin by selecting a category to see the quiz of the day for that topic.
 
 ## Running Locally
 
