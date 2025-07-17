@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: #222;
+    color: #fff;
+    padding: 1em 0;
+}
+
+main {
+    margin-top: 2em;
+}
+
+.emoji {
+    font-size: 3rem;
+    margin-bottom: 1em;
+}
+
+#guess-input {
+    padding: 0.5em;
+    font-size: 1rem;
+    width: 200px;
+}
+
+#guess-btn {
+    padding: 0.5em 1em;
+    font-size: 1rem;
+    margin-left: 0.5em;
+}
+
+#message {
+    margin-top: 1em;
+    font-weight: bold;
+}
