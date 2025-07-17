@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
 const quizzes = [
     { emoji: '🎬🚀', answer: 'Star Wars', category: 'Movies' },
@@ -37,6 +38,7 @@ function getQuizOfTheDay(category) {
     return qs[dayOfYear % qs.length];
 }
 
+
 function shuffle(arr) {
     return arr.sort(() => Math.random() - 0.5);
 }
@@ -61,6 +63,7 @@ function showChallengeQuestion() {
     input.focus();
 }
 
+
 let currentQuiz = null;
 
 const input = document.getElementById('guess-input');
@@ -76,12 +79,19 @@ function startQuiz(category) {
 
     attempts = 0;
     inDailyChallenge = false;
+
+function startQuiz(category) {
+    attempts = 0;
     currentQuiz = getQuizOfTheDay(category);
     document.getElementById('emoji-display').textContent = currentQuiz.emoji;
     message.textContent = '';
     input.disabled = false;
     input.value = '';
+
     livesDisplay.textContent = '';
+
+    livesDisplay.textContent = '';
+
     document.getElementById('quiz-section').hidden = false;
     document.getElementById('category-selection').hidden = true;
     input.focus();
@@ -135,4 +145,19 @@ hintBtn.addEventListener('click', () => {
         message.textContent = `Hint: ${currentQuiz.category}`;
     }
 });
+
+});
+
+    attempts++;
+    if (guess === currentQuiz.answer.toLowerCase()) {
+        message.textContent = `Correct! The answer was "${currentQuiz.answer}"`;
+        input.disabled = true;
+    } else if (attempts >= maxAttempts) {
+        message.textContent = `Out of attempts! The answer was "${currentQuiz.answer}"`;
+        input.disabled = true;
+    } else {
+        const remaining = maxAttempts - attempts;
+        message.textContent = `Wrong! Attempts left: ${remaining}`;
+    }
+    input.value = '';
 });

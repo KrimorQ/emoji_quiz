@@ -39,6 +39,7 @@ main {
     margin-left: 0.5em;
 }
 
+
 #hint-btn {
     padding: 0.5em 1em;
     font-size: 1rem;
@@ -49,6 +50,7 @@ main {
     margin-top: 0.5em;
     font-weight: bold;
 }
+
 
 #message {
     margin-top: 1em;
