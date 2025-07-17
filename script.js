@@ -62,10 +62,16 @@ function showChallengeQuestion() {
 
 let currentQuiz = null;
 
-const input = document.getElementById('guess-input');
-const message = document.getElementById('message');
-const hintBtn = document.getElementById('hint-btn');
-const livesDisplay = document.getElementById('lives');
+let input;
+let message;
+let hintBtn;
+let livesDisplay;
+
+document.addEventListener('DOMContentLoaded', () => {
+    input = document.getElementById('guess-input');
+    message = document.getElementById('message');
+    hintBtn = document.getElementById('hint-btn');
+    livesDisplay = document.getElementById('lives');
 
 function startQuiz(category) {
     if (category === 'Daily Challenge') {
@@ -137,3 +143,5 @@ hintBtn.addEventListener('click', () => {
         message.textContent = `Hint: ${currentQuiz.category}`;
     }
 });
+
+}); // end DOMContentLoaded
