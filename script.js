@@ -7,6 +7,7 @@ const quizzes = [
     { emoji: '⚡️🧙', answer: 'Harry Potter', category: 'Movies' },
     { emoji: '🌋🦎', answer: 'Godzilla', category: 'Movies' },
     { emoji: '🐯👑', answer: 'Tiger King', category: 'Movies' },
+<<<<<<< vna0jm-codex/create-daily-emoji-quiz-website
 
     { emoji: '🍙👹', answer: 'Demon Slayer', category: 'Anime' },
     { emoji: '⚡️🍥', answer: 'Naruto', category: 'Anime' },
@@ -16,16 +17,21 @@ const quizzes = [
     { emoji: '🔫👾', answer: 'Space Invaders', category: 'Video Games' },
     { emoji: '🧟🔫', answer: 'Resident Evil', category: 'Video Games' },
 
+=======
+>>>>>>> main
     { emoji: '⛺🔥', answer: 'campfire', category: 'Other' },
     { emoji: '🍔🍟', answer: 'fast food', category: 'Other' }
 ];
 
 let attempts = 0;
 const maxAttempts = 6;
+<<<<<<< vna0jm-codex/create-daily-emoji-quiz-website
 let lives = 3;
 let challengeQuizzes = [];
 let challengeIndex = 0;
 let inDailyChallenge = false;
+=======
+>>>>>>> main
 
 function getQuizOfTheDay(category) {
     const today = new Date();
@@ -36,6 +42,7 @@ function getQuizOfTheDay(category) {
     return qs[dayOfYear % qs.length];
 }
 
+<<<<<<< vna0jm-codex/create-daily-emoji-quiz-website
 function shuffle(arr) {
     return arr.sort(() => Math.random() - 0.5);
 }
@@ -60,10 +67,13 @@ function showChallengeQuestion() {
     input.focus();
 }
 
+=======
+>>>>>>> main
 let currentQuiz = null;
 
 const input = document.getElementById('guess-input');
 const message = document.getElementById('message');
+<<<<<<< vna0jm-codex/create-daily-emoji-quiz-website
 const hintBtn = document.getElementById('hint-btn');
 const livesDisplay = document.getElementById('lives');
 
@@ -75,12 +85,20 @@ function startQuiz(category) {
 
     attempts = 0;
     inDailyChallenge = false;
+=======
+
+function startQuiz(category) {
+    attempts = 0;
+>>>>>>> main
     currentQuiz = getQuizOfTheDay(category);
     document.getElementById('emoji-display').textContent = currentQuiz.emoji;
     message.textContent = '';
     input.disabled = false;
     input.value = '';
+<<<<<<< vna0jm-codex/create-daily-emoji-quiz-website
     livesDisplay.textContent = '';
+=======
+>>>>>>> main
     document.getElementById('quiz-section').hidden = false;
     document.getElementById('category-selection').hidden = true;
     input.focus();
@@ -93,6 +111,7 @@ document.querySelectorAll('.category-btn').forEach(btn => {
 document.getElementById('guess-btn').addEventListener('click', () => {
     const guess = input.value.trim().toLowerCase();
     if (!guess) return;
+<<<<<<< vna0jm-codex/create-daily-emoji-quiz-website
     if (inDailyChallenge) {
         if (guess === currentQuiz.answer.toLowerCase()) {
             message.textContent = 'Correct!';
@@ -134,3 +153,18 @@ hintBtn.addEventListener('click', () => {
         message.textContent = `Hint: ${currentQuiz.category}`;
     }
 });
+=======
+    attempts++;
+    if (guess === currentQuiz.answer.toLowerCase()) {
+        message.textContent = `Correct! The answer was "${currentQuiz.answer}"`;
+        input.disabled = true;
+    } else if (attempts >= maxAttempts) {
+        message.textContent = `Out of attempts! The answer was "${currentQuiz.answer}"`;
+        input.disabled = true;
+    } else {
+        const remaining = maxAttempts - attempts;
+        message.textContent = `Wrong! Attempts left: ${remaining}`;
+    }
+    input.value = '';
+});
+>>>>>>> main
